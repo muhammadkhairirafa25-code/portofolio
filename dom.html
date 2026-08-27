@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Latihan Interaktif DOM</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #334155;
+            --success: #22c55e;
+            --warning: #eab308;
+            --danger: #ef4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        h1 { text-align: center; color: var(--accent); margin-bottom: 0.5rem; }
+        p.subtitle { text-align: center; color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+        h2 { font-size: 1.2rem; color: #fff; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+
+        .demo-area { background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border: 1px dashed var(--border); }
+        .grid-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+
+        button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover { background: var(--accent-hover); }
+
+        /* Kelas bantuan untuk manipulasi DOM */
+        .box { padding: 0.75rem; margin: 0.5rem 0; background: var(--border); border-radius: 6px; }
+        .active-box { background: var(--accent) !important; color: #fff; font-weight: bold; }
+        .tag-item { display: inline-block; padding: 0.25rem 0.5rem; background: rgba(59, 130, 246, 0.2); border-radius: 4px; margin-right: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>⚡ Interactive DOM Master Module</h1>
+            <p class="subtitle">Satu file lengkap untuk mempelajari pencarian, manipulasi, event, dan pembuatan elemen DOM.</p>
+        </header>
+
+        <!-- BAGIAN 1: SELECTOR BARISAN 5 METODE -->
+        <div class="card">
+            <h2>1. Memilih Elemen (DOM Selectors)</h2>
+            
+            <div class="demo-area">
+                <h3 id="target-id">1. Elemen Target ID (#target-id)</h3>
+                <p class="target-class">2. Elemen Target Class 1 (.target-class)</p>
+                <p class="target-class">2. Elemen Target Class 2 (.target-class)</p>
+                <div class="tag-group">
+                    <span class="tag-item">3. Tag Span A</span>
+                    <span class="tag-item">3. Tag Span B</span>
+                </div>
+                <div class="query-box box">4. Query Selector (Pertama)</div>
+                <div class="query-box box">5. Query Selector All (Kedua)</div>
+            </div>
+
+            <div class="grid-buttons">
+                <button onclick="demoGetElementById()">getElementById()</button>
+                <button onclick="demoGetElementsByClassName()">getElementsByClassName()</button>
+                <button onclick="demoGetElementsByTagName()">getElementsByTagName()</button>
+                <button onclick="demoQuerySelector()">querySelector()</button>
+                <button onclick="demoQuerySelectorAll()">querySelectorAll()</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN 2: MANIPULASI KONTEN DAN STYLE -->
+        <div class="card">
+            <h2>2. Manipulasi Konten & Style</h2>
+            
+            <div class="demo-area">
+                <div id="box-konten" class="box">Teks Asli Sebelum Diubah</div>
+            </div>
+
+            <div class="grid-buttons">
+                <button onclick="ubahTeks()">Ubah innerText</button>
+                <button onclick="ubahHTML()">Ubah innerHTML</button>
+                <button onclick="ubahWarna()">Ubah Style (Warna & Radius)</button>
+                <button onclick="toggleKelas()">Toggle Class CSS</button>
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: DINAMIS ELEMENT & EVENT LISTENERS -->
+        <div class="card">
+            <h2>3. Elemen Dinamis (Create, Append, Remove) & Events</h2>
+            
+            <div class="demo-area">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                    <input type="text" id="input-teks" placeholder="Ketik teks di sini..." style="flex: 1; padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: #fff;">
+                    <button id="btn-tambah">Tambah Item</button>
+                </div>
+                
+                <ul id="daftar-item" style="padding-left: 1.2rem;">
+                    <li>Item Default 1 <button onclick="hapusElemen(this)" style="padding: 2px 6px; font-size: 0.7rem; background: var(--danger);">Hapus</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT MATERI DOM -->
+    <script>
+        /* ========================================================
+           BAGIAN 1: SELECTOR DEMO
+        ======================================================== */
+        
+        // 1. getElementById
+        function demoGetElementById() {
+            const el = document.getElementById('target-id');
+            el.style.color = '#eab308';
+            alert('getElementById: Menemukan ID "target-id" dan mengubah warnanya menjadi Kuning!');
+        }
+
+        // 2. getElementsByClassName
+        function demoGetElementsByClassName() {
+            const list = document.getElementsByClassName('target-class');
+            // Mengubah elemen pertama dari HTMLCollection
+            list[0].style.color = '#ef4444';
+            list[1].style.color = '#ef4444';
+            alert('getElementsByClassName: Menemukan ' + list.length + ' elemen ber-class "target-class"!');
+        }
+
+        // 3. getElementsByTagName
+        function demoGetElementsByTagName() {
+            const tags = document.getElementsByTagName('span');
+            tags[0].style.backgroundColor = '#22c55e';
+            tags[0].style.color = '#000';
+            alert('getElementsByTagName: Menemukan tag <span> pertama dan mengubah warna background-nya!');
+        }
+
+        // 4. querySelector
+        function demoQuerySelector() {
+            // Hanya mengambil elemen PERTAMA yang cocok dengan selector CSS
+            const firstBox = document.querySelector('.query-box');
+            firstBox.style.border = '2px solid #3b82f6';
+            alert('querySelector: Hanya menargetkan elemen PERTAMA yang ber-class ".query-box"!');
+        }
+
+        // 5. querySelectorAll
+        function demoQuerySelectorAll() {
+            // Mengambil SEMUA elemen yang cocok dalam bentuk NodeList
+            const allBoxes = document.querySelectorAll('.query-box');
+            allBoxes.forEach((box, index) => {
+                box.style.backgroundColor = '#334155';
+                box.innerText = `QuerySelectorAll: Elemen Ke-${index + 1} Berhasil Diubah!`;
+            });
+            alert('querySelectorAll: Mengubah SEMUA elemen ber-class ".query-box" menggunakan perulangan .forEach()');
+        }
+
+
+        /* ========================================================
+           BAGIAN 2: MANIPULASI KONTEN & STYLE
+        ======================================================== */
+        const boxKonten = document.getElementById('box-konten');
+
+        function ubahTeks() {
+            // innerText mengganti isi teks polos (karakter HTML akan dianggap teks biasa)
+            boxKonten.innerText = 'Teks berhasil diubah menggunakan innerText!';
+        }
+
+        function ubahHTML() {
+            // innerHTML memungkinkan kita menyisipkan struktur tag HTML baru
+            boxKonten.innerHTML = '✨ Teks dengan <strong>Format Cetak Tebal</strong> via innerHTML';
+        }
+
+        function ubahWarna() {
+            // Mengubah style inline CSS langsung
+            boxKonten.style.backgroundColor = '#22c55e';
+            boxKonten.style.color = '#000';
+            boxKonten.style.borderRadius = '20px';
+        }
+
+        function toggleKelas() {
+            // classList.toggle menambahkan kelas jika belum ada, atau menghapusnya jika sudah ada
+            boxKonten.classList.toggle('active-box');
+        }
+
+
+        /* ========================================================
+           BAGIAN 3: EVENT LISTENER, CREATE, & REMOVE ELEMENT
+        ======================================================== */
+        const btnTambah = document.getElementById('btn-tambah');
+        const inputTeks = document.getElementById('input-teks');
+        const daftarItem = document.getElementById('daftar-item');
+
+        // Menggunakan addEventListener alih-alih atribut onclick di HTML
+        btnTambah.addEventListener('click', function() {
+            const nilaiInput = inputTeks.value.trim();
+            
+            if (nilaiInput === '') {
+                alert('Ketik sesuatu di dalam input terlebih dahulu!');
+                return;
+            }
+
+            // 1. Membuat elemen <li> baru
+            const liBaru = document.createElement('li');
+            liBaru.innerText = nilaiInput + ' ';
+
+            // 2. Membuat tombol hapus secara dinamis
+            const btnHapus = document.createElement('button');
+            btnHapus.innerText = 'Hapus';
+            btnHapus.style.padding = '2px 6px';
+            btnHapus.style.fontSize = '0.7rem';
+            btnHapus.style.backgroundColor = '#ef4444';
+            btnHapus.style.marginLeft = '5px';
+            
+            // 3. Menambahkan Event Listener hapus ke tombol baru
+            btnHapus.addEventListener('click', function() {
+                liBaru.remove(); // Menghapus elemen li dari DOM
+            });
+
+            // 4. Memasukkan tombol ke dalam <li>, lalu <li> ke dalam <ul> (appendChild)
+            liBaru.appendChild(btnHapus);
+            daftarItem.appendChild(liBaru);
+
+            // Bersihkan input
+            inputTeks.value = '';
+        });
+
+        // Fungsi hapus elemen bawaan dari HTML
+        function hapusElemen(btn) {
+            // btn.parentElement merujuk ke elemen <li> tempat tombol tersebut berada
+            btn.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

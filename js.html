@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Menggunakan this</title>
+</head>
+<body>
+
+    <h2>Hasil Kelulusan Siswa</h2>
+    <div id="hasil"></div>
+
+    <script>
+        let siswa = {
+            nama: "Andi",
+            kelas: "XI RPL",
+            jurusan: "PPLG",
+            nilai: 90,
+
+            info: function () {
+                return "Nama : " + this.nama + "<br>" +
+                       "Kelas : " + this.kelas + "<br>" +
+                       "Jurusan : " + this.jurusan + "<br>" +
+                       "Nilai : " + this.nilai;
+            },
+
+            lulus: function () {
+                if (this.nilai >= 75) {
+                    return this.nama + " dinyatakan LULUS";
+                } else {
+                    return this.nama + " dinyatakan TIDAK LULUS";
+                }
+            }
+        };
+
+        document.getElementById("hasil").innerHTML =
+            siswa.info() + "<br><br>" + siswa.lulus();
+    </script>
+
+</body>
+</html>

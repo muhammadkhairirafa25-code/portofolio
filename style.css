@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #bbb;
+    margin: 0 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffbc0d;
+}
+
+
+section {
+    padding: 80px 10%;
+    min-height: 100vh;
+    scroll-margin-top: 70px; 
+}
+
+.utama {
+    margin-top: 60px;
+}
+
+
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ffbc0d;
+}
+
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+.list-makanan {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.kotak-makanan {
+    background: #151515;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s;
+    border: 1px solid #222;
+    position: relative;
+}
+
+.kotak-makanan:hover {
+    transform: translateY(-10px);
+    border-color: #ffbc0d;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+
+.bendera-bulat {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    object-fit: cover;
+    z-index: 10;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.foto-menu {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: 0.3s;
+}
+
+.kotak-makanan:hover .foto-menu {
+    filter: brightness(1);
+}
+
+.detail {
+    padding: 20px;
+}
+
+.detail h4 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.detail p {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+
+#about {
+    background-color: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-card {
+    max-width: 800px;
+    text-align: center;
+    padding: 40px;
+    border: 1px dashed #333;
+}
+
+
+.button {
+    background: transparent;
+    color: white;
+    border: 2px solid #ffbc0d;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #ffbc0d;
+    color: black;
+}
+
+
+footer {
+    background: #000;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #222;
+    color: #444;
+}
+
+
+@media (max-width: 768px) {
+    .section-title { font-size: 1.8rem; }
+    .hero-content h2 { font-size: 2rem; }
+}

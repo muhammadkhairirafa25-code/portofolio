@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Visual Styling CSS</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #3b82f6;
+            --border: #334155;
+            
+            /* Warna Visualisasi Box Model */
+            --margin-color: #f97316;
+            --border-color: #eab308;
+            --padding-color: #22c55e;
+            --content-color: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--muted);
+        }
+
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        /* 1. VISUALISASI BOX MODEL */
+        .box-model-container {
+            background-color: rgba(249, 115, 22, 0.15);
+            border: 2px dashed var(--margin-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .box-model-border {
+            background-color: rgba(234, 179, 8, 0.15);
+            border: 4px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .box-model-padding {
+            background-color: rgba(34, 197, 94, 0.15);
+            border: 2px dashed var(--padding-color);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .box-model-content {
+            background-color: var(--content-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .label-margin { color: var(--margin-color); }
+        .label-border { color: var(--border-color); }
+        .label-padding { color: var(--padding-color); }
+
+        /* 2. DEMO MARGIN VS PADDING */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .demo-box {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .demo-box h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .padding-target {
+            background-color: #3b82f6;
+            color: white;
+            padding: 2rem; /* Ruang dalam */
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .margin-wrapper {
+            background-color: rgba(249, 115, 22, 0.2);
+            padding: 0.25rem;
+            border-radius: 6px;
+        }
+
+        .margin-target {
+            background-color: #ef4444;
+            color: white;
+            margin: 1.5rem; /* Ruang luar */
+            padding: 0.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* 3. DISPLAY PROPERTIES */
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 0.25rem;
+        }
+
+        .inline-element {
+            display: inline;
+            background-color: #8b5cf6;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .block-element {
+            display: block;
+            background-color: #06b6d4;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* 4. FLEXBOX DEMO */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(15, 23, 42, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+            gap: 0.5rem;
+        }
+
+        .flex-item {
+            background-color: #10b981;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        code {
+            background-color: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #facc15;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🎨 Panduan Visual CSS Layout</h1>
+            <p>Satu file HTML interaktif untuk mempelajari Margin, Padding, Box Model, dan Flexbox.</p>
+        </header>
+
+        <!-- SECTION 1: CSS BOX MODEL -->
+        <div class="card">
+            <h2>1. CSS Box Model (Struktur Lapis Elemen)</h2>
+            <p style="margin-bottom: 1rem; color: var(--muted); font-size: 0.9rem;">
+                Setiap elemen HTML dibungkus oleh 4 lapisan kotak berikut:
+            </p>
+
+            <div class="box-model-container">
+                <span class="label label-margin">MARGIN (Jarak Luar)</span>
+                
+                <div class="box-model-border">
+                    <span class="label label-border">BORDER (Garis Tepi)</span>
+                    
+                    <div class="box-model-padding">
+                        <span class="label label-padding">PADDING (Jarak Dalam)</span>
+                        
+                        <div class="box-model-content">
+                            CONTENT (Isi Teks / Elemen)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: MARGIN VS PADDING -->
+        <div class="card">
+            <h2>2. Perbedaan Margin vs Padding</h2>
+            <div class="comparison-grid">
+                
+                <div class="demo-box">
+                    <h3>Padding (Jarak Dalam)</h3>
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem;">
+                        Memperbesar ruang antara isi dengan garis tepi elemen itu sendiri.
+                    </p>
+                    <div class="padding-target">
+                        <code>padding: 2rem;</code>
+                    </div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Margin (Jarak Luar)</h3>
+                    <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem;">
+                        Mendorong/memberi jarak antara elemen dengan elemen di sekitarnya.
+                    </p>
+                    <div class="margin-wrapper">
+                        <div class="margin-target">
+                            <code>margin: 1.5rem;</code>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION 3: DISPLAY PROPERTIES -->
+        <div class="card">
+            <h2>3. Sifat Tampilan (Display)</h2>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                
+                <div>
+                    <span class="badge">inline</span>
+                    <span class="inline-element">Teks 1</span>
+                    <span class="inline-element">Teks 2</span>
+                    <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">
+                        Elemen berdampingan menyamping, lebar menyesuaikan isi konten.
+                    </p>
+                </div>
+
+                <div>
+                    <span class="badge">block</span>
+                    <div class="block-element">Elemen Block (Selalu Mengambil 1 Baris Penuh)</div>
+                    <p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">
+                        Elemen membuat baris baru dan memenuhi lebar area secara otomatis.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION 4: FLEXBOX LAYOUT -->
+        <div class="card">
+            <h2>4. Flexbox Layout</h2>
+            <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem;">
+                Digunakan untuk menyusun barisan elemen secara rata dan fleksibel. Kode: <code>display: flex; justify-content: space-between;</code>
+            </p>
+            
+            <div class="flex-container">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

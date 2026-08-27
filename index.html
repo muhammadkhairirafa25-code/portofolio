@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Profile | F1 Petronas Edition</title>
+    <!-- Import Google Font Khas F1 Telemetry -->
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <!-- Import FontAwesome untuk Ikon (via CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 🏎️ OPSI 1: Kursor Emoji Mobil F1 (Langsung Jalan Tanpa Download Gambar) */
+.project-card, 
+.btn-primary, 
+.skill-chip {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🏎️</text></svg>") 16 16, pointer !important;
+}
+
+/* 🏎️ OPSI 2: Menggunakan File Gambar Gambar Sendiri (PNG / SVG) */
+/* 
+.project-card, 
+.btn-primary {
+    cursor: url('f1-car-cursor.png') 16 16, pointer; 
+}
+*/
+
+
+        /* CSS Variables - Mercedes F1 Petronas Tosca Theme */
+        :root {
+            --bg-color: #080c10;
+            --card-bg: #101720;
+            --card-bg-hover: #16202c;
+            --text-main: #f8fafc;
+            --text-muted: #8ea1b5;
+            --petronas-teal: #00d2be;
+            --petronas-glow: rgba(0, 210, 190, 0.4);
+            --amg-silver: #e2e8f0;
+            --border: #1e2d3d;
+            --carbon-line: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Titillium Web', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            /* Latar Belakang Subtle Grid Carbon & Teal Glow */
+            background-image: 
+                radial-gradient(circle at 90% 10%, var(--petronas-glow) 0%, transparent 35%),
+                radial-gradient(circle at 10% 90%, rgba(0, 210, 190, 0.1) 0%, transparent 40%),
+                linear-gradient(var(--carbon-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--carbon-line) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+        }
+
+        .portfolio-container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--petronas-teal);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 210, 190, 0.15);
+            position: relative;
+        }
+
+        /* Watermark Telemetry Khas F1 */
+        .portfolio-container::before {
+            content: '/// PETRONAS TELEMETRY';
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: 2px;
+        }
+
+        /* Header Profile */
+        .profile-header {
+            text-align: center;
+            padding: 3.5rem 2rem 0; /* Padding bawah dihilangkan untuk stat-bar */
+            background: linear-gradient(180deg, rgba(0, 210, 190, 0.05) 0%, transparent 100%);
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Ikon Helm Driver di samping foto profil */
+        .driver-icon {
+            position: absolute;
+            bottom: 5px;
+            right: -10px;
+            background: var(--card-bg);
+            color: var(--petronas-teal);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px solid var(--petronas-teal);
+            box-shadow: 0 0 10px var(--petronas-glow);
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--petronas-teal);
+            box-shadow: 0 0 20px var(--petronas-glow);
+        }
+
+        .name { 
+            font-size: 2rem; 
+            font-weight: 900; 
+            font-style: italic; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+            margin-bottom: 0.1rem; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .name i {
+            color: var(--petronas-teal);
+            font-size: 1.4rem;
+        }
+
+        .username { 
+            color: var(--petronas-teal); 
+            font-size: 1rem; 
+            font-weight: 700; 
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem; 
+        }
+
+        .role-location { 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            font-weight: 600;
+            margin-bottom: 1.5rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .bio {
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills Chips F1 Skewed Style */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .skill-chip {
+            background-color: rgba(0, 210, 190, 0.1);
+            color: var(--petronas-teal);
+            padding: 0.3rem 0.9rem;
+            transform: skewX(-12deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 210, 190, 0.3);
+            display: inline-block;
+        }
+
+        .skill-chip span {
+            display: inline-block;
+            transform: skewX(12deg);
+        }
+
+        /* Telemetry Stat Bar (Tambahan Baru) */
+        .stat-bar {
+            display: flex;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background-color: rgba(16, 23, 32, 0.8);
+        }
+
+        .stat-item {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-style: italic;
+            color: var(--amg-silver);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .stat-value i {
+            font-size: 1rem;
+            color: var(--petronas-teal);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 2.5rem 2rem;
+        }
+        
+        .content-section.no-top-pad {
+            padding-top: 0;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--amg-silver);
+        }
+        
+        .section-title i {
+            color: var(--petronas-teal);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--petronas-teal), transparent);
+        }
+
+        /* Grid Karya / Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-bg-hover);
+            border-left-color: var(--petronas-teal);
+            border-color: rgba(0, 210, 190, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px var(--petronas-glow);
+        }
+        
+        /* Ikon pada kartu karya */
+        .project-icon {
+            font-size: 1.5rem;
+            color: var(--petronas-teal);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover .project-icon {
+            opacity: 1;
+        }
+
+        .project-title { 
+            font-size: 1.15rem; 
+            font-weight: 900;
+            font-style: italic;
+            margin-bottom: 0.5rem; 
+            color: #fff; 
+            text-transform: uppercase;
+        }
+
+        .project-desc { 
+            font-size: 0.88rem; 
+            color: var(--text-muted); 
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        /* Timeline Riwayat Pendidikan */
+        .timeline-container {
+            border-left: 2px solid var(--border);
+            padding-left: 1.75rem;
+            margin-left: 0.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.75rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Titik Glowing Petronas Teal pada timeline */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background-color: var(--petronas-teal);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--petronas-teal);
+        }
+        
+        /* Ikon pencapaian di sebelah judul pendidikan */
+        .edu-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.15rem;
+        }
+        
+        .edu-header i {
+            color: var(--petronas-teal);
+            font-size: 0.9rem;
+        }
+
+        .edu-year {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--petronas-teal);
+            letter-spacing: 1px;
+            margin-bottom: 0.1rem;
+        }
+
+        .edu-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Button Action Style F1 Skewed */
+        .action-container {
+            text-align: center;
+            padding-top: 1.5rem;
+            padding-bottom: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--petronas-teal);
+            color: #000;
+            padding: 0.85rem 2.5rem;
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transform: skewX(-12deg);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--petronas-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: #00f5d4;
+            transform: skewX(-12deg) translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 245, 212, 0.6);
+        }
+
+        .btn-primary span, .btn-primary i {
+            display: inline-block;
+            transform: skewX(12deg);
+        }
+
+        /* Responsiveness untuk Mobile */
+        @media (max-width: 600px) {
+            .content-section { padding: 1.75rem 1.25rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .portfolio-container::before { display: none; }
+            .stat-value { font-size: 1.2rem; }
+            .stat-label { font-size: 0.65rem; }
+        }
+
+        /* =========================================
+   🏎️ FLOATING MINI MASCOT (Kanan Bawah)
+========================================= */
+.f1-mascot {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Animasi naik turun perlahan */
+@keyframes floatMascot {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+.mascot-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid var(--petronas-teal);
+    box-shadow: 0 0 20px var(--petronas-glow);
+    background-color: var(--card-bg);
+    object-fit: cover;
+    animation: floatMascot 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+.f1-mascot:hover .mascot-avatar {
+    transform: scale(1.1);
+    animation-play-state: paused; /* Berhenti melayang saat di-hover */
+}
+
+/* Bubble Text (Kotak Pesan) */
+.mascot-tooltip {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid var(--petronas-teal);
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    pointer-events: none;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* Segitiga kecil di bawah bubble */
+.mascot-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px 6px 0;
+    border-style: solid;
+    border-color: var(--petronas-teal) transparent transparent transparent;
+}
+
+.f1-mascot:hover .mascot-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Sembunyikan mascot di layar HP yang terlalu kecil agar tidak menutupi konten */
+@media (max-width: 600px) {
+    .mascot-avatar { width: 60px; height: 60px; }
+    .f1-mascot { bottom: 15px; right: 15px; }
+}
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        
+        <!-- HEADER SECTION -->
+        <header class="profile-header">
+            <div class="profile-img-wrapper">
+                <img src="https://static-cdn.bangsaonline.com/uploads/berita/ff798fe53fa35e22b35ec235cf0a357f.jpg" alt="Foto Profil" class="profile-img">
+                <div class="driver-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            </div>
+            
+            <h1 class="name"><i class="fa-solid fa-flag-checkered"></i> Khairuy Rafuy</h1>
+            <p class="username">@rafachalamet</p>
+            <p class="role-location"><i class="fa-solid fa-location-dot" style="margin-right: 5px; color: var(--petronas-teal);"></i> Samarinda, Indonesia • Pit Lane</p>
+            
+            <p class="bio">
+                Bersemangat dalam mempelajari pengembangan web. Fokus membangun antarmuka interaktif dan formulir data yang responsif layaknya mobil F1 yang presisi.
+            </p>
+
+            <div class="skills-container">
+                <div class="skill-chip"><span>Web Design</span></div>
+                <div class="skill-chip"><span>UI/UX</span></div>
+                <div class="skill-chip"><span>Frontend</span></div>
+            </div>
+        </header>
+
+        <!-- STATISTIK TELEMETRI -->
+        <div class="stat-bar">
+            <div class="stat-item">
+                <div class="stat-value"><i class="fa-solid fa-code"></i> 2.4k</div>
+                <div class="stat-label">Baris Kode</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value"><i class="fa-solid fa-stopwatch"></i> 142h</div>
+                <div class="stat-label">Jam Belajar</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value"><i class="fa-solid fa-folder-open"></i> 4</div>
+                <div class="stat-label">Proyek Selesai</div>
+            </div>
+        </div>
+
+        <!-- KARYA / PROJECTS SECTION -->
+        <section class="content-section">
+            <h2 class="section-title"><i class="fa-solid fa-car-side"></i> Garasi Proyek</h2>
+            
+            <div class="projects-grid">
+                
+                <!-- Project 1: HTML -->
+                <div class="project-card" onclick="showProjectInfo('HTML Structure', 'test.html')">
+                    <i class="fa-brands fa-html5 project-icon"></i>
+                    <h3 class="project-title">1. HTML Structure</h3>
+                    <p class="project-desc">Sasis utama web. Proyek dasar pembuatan semantik web dan struktur halaman pendaftaran.</p>
+                </div>
+
+                <!-- Project 2: CSS -->
+                <div class="project-card" onclick="showProjectInfo('CSS Styling', 'css-demo.html')">
+                    <i class="fa-brands fa-css3-alt project-icon"></i>
+                    <h3 class="project-title">2. CSS Styling</h3>
+                    <p class="project-desc">Livery & Aerodinamika. Implementasi layout responsif dan tata letak yang menarik secara visual.</p>
+                </div>
+
+                <!-- Project 3: JavaScript -->
+                <div class="project-card" onclick="showProjectInfo('JavaScript Logic', 'js.html')">
+                    <i class="fa-brands fa-js project-icon"></i>
+                    <h3 class="project-title">3. JavaScript</h3>
+                    <p class="project-desc">Mesin penggerak. Pengembangan fungsi interaktif seperti notifikasi peringatan dan validasi form.</p>
+                </div>
+
+                <!-- Project 4: DOM -->
+                <div class="project-card" onclick="showProjectInfo('DOM Manipulation', 'dom.html')">
+                    <i class="fa-solid fa-gears project-icon"></i>
+                    <h3 class="project-title">4. DOM Manipulation</h3>
+                    <p class="project-desc">Sistem Telemetri. Memanipulasi elemen halaman secara dinamis berdasarkan interaksi pengguna.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PENDIDIKAN / EDUCATION SECTION -->
+        <section class="content-section no-top-pad">
+            <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Riwayat Lintasan (Pendidikan)</h2>
+            
+            <!-- Timeline Container -->
+            <div class="timeline-container">
+                
+                <!-- Riwayat 3 (Terbaru) -->
+                <div class="timeline-item">
+                    <div class="edu-year">2025 - SEKARANG</div>
+                    <div class="edu-header">
+                        <i class="fa-solid fa-medal"></i>
+                        <div class="edu-title">Sekolah Menengah Kejuruan (SMK)</div>
+                    </div>
+                    <div class="edu-school">SMK TI AIRLANGGA</div>
+                </div>
+
+                <!-- Riwayat 2 (Menengah) -->
+                <div class="timeline-item">
+                    <div class="edu-year">2022 - 2025</div>
+                    <div class="edu-header">
+                        <i class="fa-solid fa-award"></i>
+                        <div class="edu-title">Sekolah Menengah Pertama (SMP)</div>
+                    </div>
+                    <div class="edu-school">SMP 17 Agustus 1945 Samarinda</div>
+                </div>
+
+                <!-- Riwayat 1 (Paling Lama) -->
+                <div class="timeline-item">
+                    <div class="edu-year">2016 - 2022</div>
+                    <div class="edu-header">
+                        <i class="fa-solid fa-star"></i>
+                        <div class="edu-title">Sekolah Dasar (SD)</div>
+                    </div>
+                    <div class="edu-school">SDN 016 Samarinda</div>
+                </div>
+
+            </div>
+            
+            <!-- BUTTON KE HALL OF CREATIONS -->
+            <div class="action-container">
+                <a href="#" class="btn-primary" onclick="alert('Mengalihkan ke Hall of Creations...')">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>Masuk ke Hall of Creations</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script JavaScript untuk Interaksi Sederhana -->
+    <script>
+    function showProjectInfo(projectName, urlTujuan) {
+        // 1. Munculkan notifikasi
+        alert("Anda sedang melihat detail telemetry: " + projectName);
+        
+        // 2. Setelah klik OK, pindah ke file tujuan
+        window.location.href = urlTujuan;
+    }
+    </script>
+
+    <!-- KARAKTER MINI MASCOT -->
+<div class="f1-mascot" onclick="alert('Brumm! Siap coding hari ini, Bos?')">
+    <div class="mascot-tooltip">Box, box, box! 🏎️</div>
+    
+    <!-- GANTI URL SRC DI BAWAH DENGAN GAMBAR KARAKTER MINI MERCEDES ANDA -->
+    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Lewis&clothing=blazerAndShirt&clothingColor=black&mouth=smile" 
+         alt="Mini Driver" 
+         class="mascot-avatar">
+</div>
+</body>
+</html>
