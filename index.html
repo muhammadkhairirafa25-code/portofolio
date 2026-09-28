@@ -435,6 +435,41 @@
             transform: skewX(12deg);
         }
 
+        /* Tombol Login (Pojok Kiri Atas Kartu) */
+        .btn-login {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            z-index: 5;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--petronas-teal);
+            border: 1.5px solid var(--petronas-teal);
+            padding: 0.45rem 1.1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transform: skewX(-12deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: var(--petronas-teal);
+            color: #000;
+            box-shadow: 0 0 15px var(--petronas-glow);
+        }
+
+        .btn-login span, .btn-login i {
+            display: inline-block;
+            transform: skewX(12deg);
+        }
+
         /* Responsiveness untuk Mobile */
         @media (max-width: 600px) {
             .content-section { padding: 1.75rem 1.25rem; }
@@ -442,6 +477,7 @@
             .portfolio-container::before { display: none; }
             .stat-value { font-size: 1.2rem; }
             .stat-label { font-size: 0.65rem; }
+            .btn-login { top: 12px; left: 12px; padding: 0.4rem 0.9rem; font-size: 0.7rem; }
         }
 
         /* =========================================
@@ -528,7 +564,13 @@
 <body>
 
     <div class="portfolio-container">
-        
+
+        <!-- TOMBOL LOGIN: ganti href="login.html" dengan URL halaman login Anda -->
+        <a href="login.php" class="btn-login">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Login</span>
+        </a>
+
         <!-- HEADER SECTION -->
         <header class="profile-header">
             <div class="profile-img-wrapper">
@@ -661,7 +703,7 @@
         alert("Anda sedang melihat detail telemetry: " + projectName);
         
         // 2. Setelah klik OK, pindah ke file tujuan
-        window.location.href = urlTujuan;
+        window.location.href = 'login.php';
     }
     </script>
 
