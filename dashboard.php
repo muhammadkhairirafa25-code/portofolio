@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 
@@ -460,6 +461,12 @@ $driver_id = $_SESSION['driver_id'] ?? 'Driver 44';
         <!-- 3. CONTENT AREA -->
         <main class="content">
 
+=======
+
+<?php
+  include "layouts/header.php"
+?>
+>>>>>>> bb87833 (update)
             <!-- Stat Cards -->
             <div class="metrics-grid">
                 <div class="metric-card">
@@ -531,6 +538,7 @@ $driver_id = $_SESSION['driver_id'] ?? 'Driver 44';
                 </div>
             </div>
 
+<<<<<<< HEAD
         </main>
 
         <!-- 4. FOOTER -->
@@ -547,3 +555,8 @@ $driver_id = $_SESSION['driver_id'] ?? 'Driver 44';
 
 </body>
 </html>
+=======
+ <?php
+  include "layouts/footer.php"
+?>
+>>>>>>> bb87833 (update)
